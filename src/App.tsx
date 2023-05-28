@@ -6,16 +6,22 @@ function App() {
   const [disabled, setDisabled] = useState<boolean>(false);
 
   const newButtonColor = buttonColor === "red" ? "blue" : "red";
+
   return (
     <div>
       <button
         disabled={disabled}
         onClick={() => setButtonColor(newButtonColor)}
-        style={{ backgroundColor: buttonColor }}
+        style={{ backgroundColor: disabled ? "gray" : buttonColor }}
       >
         Change to {newButtonColor}
       </button>
-      <input type={"checkbox"} onClick={() => setDisabled((prev) => !prev)} />
+      <input
+        type={"checkbox"}
+        onClick={() => setDisabled((prev) => !prev)}
+        id={"disable-button-checkbox"}
+      />
+      <label htmlFor={"disable-button-checkbox"}>Disable button</label>
     </div>
   );
 }
